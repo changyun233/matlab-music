@@ -8,6 +8,9 @@ function data=waveGen(time,freq,laud,fs)
     for i=1:lengthHarmonic
         data=sin(2*pi*i*freq*(0:round(time*fs))/fs)*harmonicArray(i)+data;
     end
+    asr=adsr(time,fs);
+    lengthReq=length(data)-length(asr);
+    asr=[asr,zeros(1,lengthReq)];
+    data=data.*asr;
     data=data/max(abs(data)).*laud;
-    %data=data.*(x.*(2*pi*time-x)).*2.718282828.^(1-x)/(pi*x)/pi*x;
 end
