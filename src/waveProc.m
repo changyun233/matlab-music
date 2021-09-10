@@ -1,4 +1,4 @@
-function output = waveproc(input)
+function output = waveProc(input)
     input=resample(input,10,1);
     lengthInput=length(input);
     [temp,max1]=max(input(1:round(lengthInput/3)));
